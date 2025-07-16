@@ -6,29 +6,32 @@ import Home from "./Components/Home/Home.js";
 import Shop from "./Components/Shop/Shop.js";
 import NavBar from "./Components/NavBar/NavBar.js";
 import reportWebVitals from "./reportWebVitals";
+import { CartProvider } from "./Components/CartContext.js";
 
 const Layout = () => (
-  <>
-    <NavBar />
-    <Outlet />
-  </>
+    <>
+        <NavBar />
+        <Outlet />
+    </>
 );
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,  // <-- provides the router context
-    children: [
-      { index: true, element: <Home /> },  // index = default route
-      { path: "shop", element: <Shop /> },
-    ],
-  },
+    {
+        path: "/",
+        element: <Layout />, // <-- provides the router context
+        children: [
+            { index: true, element: <Home /> }, // index = default route
+            { path: "shop", element: <Shop /> },
+        ],
+    },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <CartProvider>
+            <RouterProvider router={router} />
+        </CartProvider>
     </React.StrictMode>
 );
 

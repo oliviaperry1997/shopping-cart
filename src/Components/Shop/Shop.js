@@ -1,6 +1,7 @@
 // Shop.js
 import React, { useEffect, useState } from "react";
 import { useCart } from "../CartContext";
+import styles from "./Shop.module.css";
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -37,41 +38,32 @@ const Shop = () => {
     }
 
     return (
-        <div>
-            <h1>Shop</h1>
-            <ul>
-                {products.map((product) => {
-                    const quantity = quantities[product.id] || 1;
-                    return (
-                        <li key={product.id} style={{ marginBottom: "1rem" }}>
-                            <h2>{product.title}</h2>
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                style={{ width: "100px" }}
-                            />
-                            <p>${product.price}</p>
-                            <input
-                                type="number"
-                                min="1"
-                                value={quantity}
-                                onChange={(e) =>
-                                    handleQuantityChange(
-                                        product.id,
-                                        e.target.value
-                                    )
-                                }
-                                style={{ width: "50px", marginRight: "0.5rem" }}
-                            />
-                            <button
-                                onClick={() => addToCart(product, quantity)}
-                            >
-                                Add to Cart
-                            </button>
-                        </li>
-                    );
-                })}
-            </ul>
+        <div className={styles.shopContainer}>
+            {products.map((product) => {
+                const quantity = quantities[product.id] || 1;
+                return (
+                    <div key={product.id} className={styles.productCard}>
+                        <img src={product.image} alt={product.title} />
+                        <h3>{product.title}</h3>
+                        <p>${product.price}</p>
+                        <input
+                            type="number"
+                            min="1"
+                            value={quantity}
+                            onChange={(e) =>
+                                handleQuantityChange(product.id, e.target.value)
+                            }
+                            className={styles.quantityInput}
+                        />
+                        <button
+                            onClick={() => addToCart(product, quantity)}
+                            className={styles.addToCartBtn}
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                );
+            })}
         </div>
     );
 };

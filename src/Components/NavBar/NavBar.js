@@ -12,16 +12,15 @@ const NavBar = () => {
 
     return (
         <div className={styles.navbar}>
-            <Link to="/">Home</Link>
-            <Link to="shop">Shop</Link>
+            <div className={styles.navLinks}>
+                <Link to="/">Home</Link>
+                <Link to="shop">Shop</Link>
+            </div>
 
             {location.pathname === "/shop" && (
-                <div style={{ marginLeft: "auto" }}>
-                    <span role="img" aria-label="cart">
-                        🛒
-                    </span>{" "}
-                    {totalCount}
-                    <button style={{ marginLeft: "1rem" }}>Checkout</button>
+                <div className={styles.cart}>
+                    🛒 <span>{totalCount}</span>
+                    <button className={styles.checkoutBtn}>Checkout</button>
                 </div>
             )}
         </div>

@@ -1,0 +1,51 @@
+.homeContainer {
+  text-align: center;
+  padding: 50px;
+  background: #fdfdfd;
+}
+
+.homeContainer h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.homeContainer p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.featured {
+  margin-top: 40px;
+}
+
+.featured h2 {
+  font-size: 2rem;
+}
+
+.featured ul {
+  list-style: none;
+  padding: 0;
+}
+
+.featured li {
+  display: inline-block;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  background: #eee;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.featured li:hover {
+  background: #ddd;
+  cursor: pointer;
+}
+
+.banner {
+  margin-top: 50px;
+  background: #4caf50;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
